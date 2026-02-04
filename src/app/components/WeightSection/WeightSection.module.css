@@ -1,0 +1,26 @@
+.weightSection {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 12px;
+	padding: 24px;
+	background-color: rgba(var(--pastel-green-rgb), 0.1);
+	border-radius: 8px;
+}
+
+.titleBar {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 20px;
+}
+
+.titleSvg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(var(--pastel-green-rgb), 0.2);
+	border-radius: 12px;
+	width: 36px;
+	height: 36px;
+}

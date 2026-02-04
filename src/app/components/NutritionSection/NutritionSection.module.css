@@ -1,0 +1,83 @@
+.nutritionSection {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 24px;
+	background-color: rgba(var(--pastel-peach-rgb), 0.1);
+	border-radius: 8px;
+}
+
+.nutritionHeader {
+	display: flex;
+	justify-content: space-between;
+}
+
+.titleBar {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 20px;
+}
+
+.titleSvg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(var(--pastel-peach-rgb), 0.2);
+	border-radius: 12px;
+	width: 36px;
+	height: 36px;
+}
+
+.addButton {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: fit-content;
+	height: 32px;
+	padding: 6px 12px;
+	background-color: var(--default-background);
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.addButton:hover {
+	background-color: rgba(var(--pastel-sky-rgb), 0.6);
+}
+
+.nutritionMeals {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.mealSection {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 16px;
+	background-color: #ffffff5e;
+	border-radius: 8px;
+}
+
+.mealHeader {
+	display: flex;
+	justify-content: space-between;
+}
+
+.mealDelete {
+	background-color: transparent;
+	width: 32px;
+	height: 32px;
+	transition: transform 0.2s ease;
+}
+
+.mealDelete:hover {
+	transform: scale(1.25);
+}
+
+.NutritionList {
+	display: flex;
+	gap: 16px;
+	margin-top: 16px;
+}
