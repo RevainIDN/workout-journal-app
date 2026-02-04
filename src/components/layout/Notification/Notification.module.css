@@ -1,0 +1,28 @@
+.notification {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	left: 50%;
+	top: 16px;
+	width: 350px;
+	padding: 16px;
+	background-color: var(--main-background);
+	border-radius: 8px;
+	transform: translate(-50%, -20px);
+	opacity: 0;
+	animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+	to {
+		transform: translate(-50%, 0);
+		opacity: 1;
+	}
+}
+
+.svgWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
