@@ -25,7 +25,7 @@ body,
 body {
   min-height: 100%;
   line-height: 1.5;
-  background-color: white;
+  background-color: var(--main-background);
   font-family: var(--font-sans), sans-serif;
 }
 
@@ -55,4 +55,20 @@ button {
 button {
   cursor: pointer;
   border: none;
+}
+
+h1 {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+p {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
 }
