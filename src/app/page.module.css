@@ -1,0 +1,32 @@
+.todayPage {
+	width: 100%;
+	background-color: var(--main-background);
+	margin-bottom: 12px;
+}
+
+.pageContent {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	width: 800px;
+	padding: 32px 16px;
+	margin: 0 auto;
+}
+
+.unifyingContainer {
+	display: flex;
+	gap: 16px;
+}
+
+.saveButton {
+	width: 100%;
+	padding: 16px;
+	color: #F8FAFB;
+	background-color: rgba(var(--pastel-aqua-rgb), 1);
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.saveButton:hover {
+	background-color: rgba(var(--pastel-aqua-rgb), 0.9);
+}
