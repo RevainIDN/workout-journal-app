@@ -1,0 +1,18 @@
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 8px;
+	border-radius: 4px;
+	background-color: #e0e0e0;
+	color: #333;
+	font-size: 1rem;
+	border-radius: 8px;
+}
+
+.tagContent {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 0.65rem;
+}
