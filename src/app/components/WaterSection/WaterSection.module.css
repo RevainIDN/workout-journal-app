@@ -21,6 +21,7 @@
 	justify-content: center;
 	background-color: rgba(var(--pastel-aqua-rgb), 0.2);
 	border-radius: 12px;
+	color: rgba(var(--pastel-aqua-rgb), 1);
 	width: 36px;
 	height: 36px;
 }
