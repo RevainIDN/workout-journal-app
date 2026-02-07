@@ -1,30 +1,4 @@
-import { formatDate } from '@/lib/utils/formatDate';
-
-export interface JournalEntry {
-	date: string;
-	workout: {
-		workoutType: string;
-		workoutDescription: string;
-		workoutDuration: string | number | undefined;
-		moodAfter: string;
-		energyAfter: string;
-	};
-	nutrition: Array<{
-		id: number;
-		description: string;
-		calories: number | undefined;
-		protein: number | undefined;
-		carbs: number | undefined;
-		fats: number | undefined;
-	}>;
-	water: number | undefined;
-	weight: string | number | undefined;
-	notes: string;
-}
-
-interface StorageData {
-	entries: JournalEntry[];
-}
+import { JournalEntry } from '@/types/journalEntryTypes';
 
 const STORAGE_KEY = 'journal-entries';
 
@@ -74,7 +48,7 @@ export const storageService = {
 		try {
 			const entries = storageService.getAllEntries();
 			const filtered = entries.filter(entry => entry.date !== date);
-			localStorage.setItem(STORAGE_KEY, JSON.stringify({ filtered }));
+			localStorage.setItem(STORAGE_KEY, JSON.stringify({ entries: filtered }));
 		} catch (error) {
 			console.error('Error deleting entry:', error);
 		}
