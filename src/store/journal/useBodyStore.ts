@@ -21,5 +21,5 @@ export const useBodyStore = create<BodyStore>((set) => ({
 		litersOfWater: Math.max(0, (state.litersOfWater ?? 0) - 1)
 	})),
 	resetWater: () => set({ litersOfWater: 0 }),
-	resetWeight: () => set({ weight: 0 }),
+	resetWeight: () => set({ weight: undefined }),
 }));

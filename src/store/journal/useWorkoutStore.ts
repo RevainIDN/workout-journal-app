@@ -15,15 +15,15 @@ interface WorkoutStore {
 }
 
 export const useWorkoutStore = create<WorkoutStore>((set) => ({
-	workoutType: '',
+	workoutType: 'Strength Training',
 	workoutDescription: '',
 	workoutDuration: undefined,
-	moodAfter: '',
-	energyAfter: '',
+	moodAfter: '😊 Good',
+	energyAfter: 'Moderate',
 	saveWorkoutType: (type) => set({ workoutType: type }),
 	saveWorkoutDescription: (desc) => set({ workoutDescription: desc }),
 	saveWorkoutDuration: (duration) => set({ workoutDuration: duration }),
 	saveMood: (mood) => set({ moodAfter: mood }),
 	saveEnergy: (energy) => set({ energyAfter: energy }),
-	resetWorkout: () => set({ workoutType: '', workoutDescription: '', workoutDuration: 0, moodAfter: '', energyAfter: '' }),
+	resetWorkout: () => set({ workoutType: '', workoutDescription: '', workoutDuration: undefined, moodAfter: '', energyAfter: '' }),
 }));
