@@ -1,0 +1,55 @@
+.historyDropdownList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.historyEntry {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--default-background);
+	padding: 16px;
+	border-radius: 8px;
+}
+
+.shortHistoryContent {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.shortHistoryTitle {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: rgba(var(--pastel-aqua-rgb), 1);
+}
+
+.shortHistoryTags {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.deleteButton,
+.viewButton {
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+.deleteButton:hover {
+	transform: scale(1.1);
+}
+
+.fullHistoryContent {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	background-color: var(--default-background);
+	padding: 16px;
+}

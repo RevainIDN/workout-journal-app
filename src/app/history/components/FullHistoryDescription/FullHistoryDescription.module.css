@@ -1,0 +1,68 @@
+.fullHistoryContent {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 16px;
+	background-color: var(--default-background);
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top: 1px solid var(--border);
+}
+
+.workoutSection {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.workoutTitle {
+	color: rgba(var(--pastel-aqua-rgb), 1);
+}
+
+.nutritionTitle {
+	color: rgba(var(--pastel-peach-rgb), 1);
+}
+
+.nutritionSection {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.meal {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	background-color: #f0f4f880;
+	padding: 12px;
+	border-radius: 8px;
+}
+
+.mealDetails {
+	display: flex;
+	gap: 8px;
+}
+
+.dailyTotal {
+	padding-top: 8px;
+	border-top: 1px solid var(--border);
+}
+
+.otherInfoSection {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+
+.notesSection {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 12px;
+}
