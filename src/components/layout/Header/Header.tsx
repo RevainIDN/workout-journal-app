@@ -1,7 +1,16 @@
+'use client'
+
 import headerStyles from './Header.module.css';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useNavigationStore } from '@/store/navigationStore';
 
 export default function Header() {
+	const pathname = usePathname();
+	const navigationItems = useNavigationStore((state) => state.navigationItems);
+
+	const activeTab = navigationItems.find(item => item.path === pathname)?.name.toLowerCase() || 'today';
+
 	return (
 		<header className={headerStyles.header}>
 			<div className={headerStyles.headerContainer}>
@@ -17,9 +26,11 @@ export default function Header() {
 						<p className={headerStyles.subtitle}>Your personal fitness & nutrition companion</p>
 					</div>
 					<ul className={headerStyles.navLinks}>
-						<li className={headerStyles.navLinkActive}><Link href="/">Today</Link></li>
-						<li className={headerStyles.navLinkActive}><Link href="/stats">Stats</Link></li>
-						<li className={headerStyles.navLinkActive}><Link href="/history">History</Link></li>
+						{navigationItems.map((item) => (
+							<li key={item.path} className={`${headerStyles.navLink} ${activeTab === item.name.toLowerCase() ? headerStyles.navLinkActive : ''}`}>
+								<Link href={item.path}>{item.name}</Link>
+							</li>
+						))}
 					</ul>
 				</div>
 				<div className={headerStyles.userActions}>
