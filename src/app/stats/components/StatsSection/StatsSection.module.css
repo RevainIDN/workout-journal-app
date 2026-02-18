@@ -2,12 +2,12 @@
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 16px;
+	margin-bottom: 24px;
 }
 
 .statsCharts {
 	display: flex;
 	flex-direction: column;
-	margin-top: 24px;
 	gap: 24px;
 }
 
@@ -41,4 +41,13 @@
 .chartTitle {
 	font-size: 0.95rem;
 	color: var(--text-muted, #333);
+}
+
+.noDataOverlay {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	color: #8f9fb0;
+	margin-top: 48px;
 }

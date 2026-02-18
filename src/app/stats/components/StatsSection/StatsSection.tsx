@@ -8,6 +8,7 @@ import InfoCard from '@/components/ui/InfoCard/InfoCard'
 import ProgressIcon from '@/components/icons/ProgressIcon'
 import MealIcon from '@/components/icons/MealIcon'
 import WeightIcon from '@/components/icons/WeightIcon'
+import HealthIcon from '@/components/icons/HealthIcon'
 
 import {
 	ResponsiveContainer,
@@ -108,76 +109,94 @@ export default function StatsSection() {
 			.slice(-30)
 	}, [sortedEntries])
 
+	const hasWorkoutData = workoutData.some(d => d.duration > 0)
+	const hasNutritionData = nutritionData.some(d => d.calories > 0 || d.protein > 0 || d.carbs > 0 || d.fats > 0)
+
 	return (
 		<section className={statsStyles.statsSection}>
-			<div className={statsStyles.statsInfo}>
-				<InfoCard type="Workout" title='Total Workouts' value={totalWorkouts} fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
-				<InfoCard type="Water" title='Avg Water' value={`${avgWater}`} subValue='Liters' fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
-				<InfoCard type="Nutrition" title='Total Meals' value={totalMeals} fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
-				<InfoCard type="Entries" title='Entries' value={entries.length} fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
-			</div>
+			{entries.length > 0 && (
+				<div className={statsStyles.statsInfo}>
+					<InfoCard type="Workout" title='Total Workouts' value={totalWorkouts} fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
+					<InfoCard type="Water" title='Avg Water' value={`${avgWater}`} subValue='Liters' fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
+					<InfoCard type="Nutrition" title='Total Meals' value={totalMeals} fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
+					<InfoCard type="Entries" title='Entries' value={entries.length} fontSize='1.5rem' titleFontSize='0.8rem' height={120} svgCover={true} />
+				</div>
+			)}
 
 			<div className={statsStyles.statsCharts}>
-				<div className={statsStyles.chartCard}>
-					<div className={`${statsStyles.chartHeader} ${statsStyles.workoutHeader}`}>
-						<ProgressIcon />
-						<h3 className={statsStyles.chartTitle}>Workout Duration (Last 7 Days)</h3>
+				{hasWorkoutData && (
+					<div className={statsStyles.chartCard}>
+						<div className={`${statsStyles.chartHeader} ${statsStyles.workoutHeader}`}>
+							<ProgressIcon />
+							<h3 className={statsStyles.chartTitle}>Workout Duration (Last 7 Days)</h3>
+						</div>
+						{workoutData.length === 0 ? <p>No data yet</p> : (
+							<ResponsiveContainer width="100%" height={250}>
+								<BarChart data={workoutData}>
+									<CartesianGrid stroke="var(--secondary-color)" strokeDasharray="3 3" strokeOpacity={0.12} />
+									<XAxis dataKey="date" stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
+									<YAxis stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
+									<Tooltip />
+									<Legend />
+									<Bar dataKey="duration" fill="var(--pastel-blue)" radius={[6, 6, 0, 0]} />
+								</BarChart>
+							</ResponsiveContainer>
+						)}
 					</div>
-					{workoutData.length === 0 ? <p>No data yet</p> : (
-						<ResponsiveContainer width="100%" height={250}>
-							<BarChart data={workoutData}>
-								<CartesianGrid stroke="var(--secondary-color)" strokeDasharray="3 3" strokeOpacity={0.12} />
-								<XAxis dataKey="date" stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
-								<YAxis stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
-								<Tooltip />
-								<Legend />
-								<Bar dataKey="duration" fill="var(--pastel-blue)" radius={[6, 6, 0, 0]} />
-							</BarChart>
-						</ResponsiveContainer>
-					)}
-				</div>
+				)}
 
-				<div className={statsStyles.chartCard}>
-					<div className={`${statsStyles.chartHeader} ${statsStyles.nutritionHeader}`}>
-						<MealIcon />
-						<h3 className={statsStyles.chartTitle}>Nutrition Tracking (Last 7 Days)</h3>
+				{hasNutritionData && (
+					<div className={statsStyles.chartCard}>
+						<div className={`${statsStyles.chartHeader} ${statsStyles.nutritionHeader}`}>
+							<MealIcon />
+							<h3 className={statsStyles.chartTitle}>Nutrition Tracking (Last 7 Days)</h3>
+						</div>
+						{nutritionData.length === 0 ? <p>No data yet</p> : (
+							<ResponsiveContainer width="100%" height={250}>
+								<LineChart data={nutritionData}>
+									<CartesianGrid stroke="var(--secondary-color)" strokeDasharray="3 3" strokeOpacity={0.12} vertical={false} />
+									<XAxis dataKey="date" stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
+									<YAxis stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
+									<Tooltip />
+									<Legend />
+									<Line type="monotone" dataKey="calories" stroke="var(--pastel-peach)" strokeWidth={2} dot={{ r: 3 }} />
+									<Line type="monotone" dataKey="protein" stroke="var(--pastel-pink)" strokeWidth={2} dot={{ r: 3 }} />
+									<Line type="monotone" dataKey="carbs" stroke="var(--pastel-lavender)" strokeWidth={2} dot={{ r: 3 }} />
+									<Line type="monotone" dataKey="fats" stroke="var(--pastel-green)" strokeWidth={2} dot={{ r: 3 }} />
+								</LineChart>
+							</ResponsiveContainer>
+						)}
 					</div>
-					{nutritionData.length === 0 ? <p>No data yet</p> : (
-						<ResponsiveContainer width="100%" height={250}>
-							<LineChart data={nutritionData}>
-								<CartesianGrid stroke="var(--secondary-color)" strokeDasharray="3 3" strokeOpacity={0.12} vertical={false} />
-								<XAxis dataKey="date" stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
-								<YAxis stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
-								<Tooltip />
-								<Legend />
-								<Line type="monotone" dataKey="calories" stroke="var(--pastel-peach)" strokeWidth={2} dot={{ r: 3 }} />
-								<Line type="monotone" dataKey="protein" stroke="var(--pastel-pink)" strokeWidth={2} dot={{ r: 3 }} />
-								<Line type="monotone" dataKey="carbs" stroke="var(--pastel-lavender)" strokeWidth={2} dot={{ r: 3 }} />
-								<Line type="monotone" dataKey="fats" stroke="var(--pastel-green)" strokeWidth={2} dot={{ r: 3 }} />
-							</LineChart>
-						</ResponsiveContainer>
-					)}
-				</div>
+				)}
 
-				<div className={statsStyles.chartCard}>
-					<div className={`${statsStyles.chartHeader} ${statsStyles.weightHeader}`}>
-						<WeightIcon />
-						<h3 className={statsStyles.chartTitle}>Weight Progress</h3>
+				{weightData.length > 0 && (
+					<div className={statsStyles.chartCard}>
+						<div className={`${statsStyles.chartHeader} ${statsStyles.weightHeader}`}>
+							<WeightIcon />
+							<h3 className={statsStyles.chartTitle}>Weight Progress</h3>
+						</div>
+						{weightData.length === 0 ? <p>No weight data</p> : (
+							<ResponsiveContainer width="100%" height={250}>
+								<LineChart data={weightData}>
+									<CartesianGrid stroke="var(--secondary-color)" strokeDasharray="3 3" strokeOpacity={0.12} vertical={false} />
+									<XAxis dataKey="date" stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
+									<YAxis stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
+									<Tooltip />
+									<Legend />
+									<Line type="monotone" dataKey="weight" stroke="var(--pastel-green)" strokeWidth={2} dot={{ r: 3 }} />
+								</LineChart>
+							</ResponsiveContainer>
+						)}
 					</div>
-					{weightData.length === 0 ? <p>No weight data</p> : (
-						<ResponsiveContainer width="100%" height={250}>
-							<LineChart data={weightData}>
-								<CartesianGrid stroke="var(--secondary-color)" strokeDasharray="3 3" strokeOpacity={0.12} vertical={false} />
-								<XAxis dataKey="date" stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
-								<YAxis stroke="var(--secondary-color)" tick={{ fill: 'var(--secondary-color)' }} axisLine={{ stroke: 'var(--secondary-color)' }} tickLine={{ stroke: 'var(--secondary-color)' }} />
-								<Tooltip />
-								<Legend />
-								<Line type="monotone" dataKey="weight" stroke="var(--pastel-green)" strokeWidth={2} dot={{ r: 3 }} />
-							</LineChart>
-						</ResponsiveContainer>
-					)}
-				</div>
+				)}
 			</div>
+			{entries.length === 0 && (
+				<div className={statsStyles.noDataOverlay}>
+					<HealthIcon width={48} height={48} />
+					<h1>No data yet</h1>
+					<p>Start logging your daily entries to see your progress here!</p>
+				</div>
+			)}
 		</section>
 	)
 }

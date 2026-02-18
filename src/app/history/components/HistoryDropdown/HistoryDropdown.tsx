@@ -60,6 +60,13 @@ export default function HistoryDropdown() {
 					)}
 				</div>
 			))}
+			{history.length === 0 && (
+				<div className={historyDropdownStyles.noDataOverlay}>
+					<CalendarIcon width={48} height={48} />
+					<h1>No journal entries yet</h1>
+					<p>Your wellness journey starts with your first entry!</p>
+				</div>
+			)}
 		</section>
 	)
 }
