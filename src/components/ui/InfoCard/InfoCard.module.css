@@ -1,0 +1,32 @@
+.infoCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 4px;
+	padding: 12px;
+	border-radius: 8px;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.svgCover {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(var(--pastel-lavender-rgb), 0.2);
+	border-radius: 12px;
+	color: rgba(var(--pastel-lavender-rgb), 1);
+	width: 36px;
+	height: 36px;
+}
+
+.subValue {
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: rgba(var(--text-secondary-rgb), 1);
+	margin-left: 4px;
+}
