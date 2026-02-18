@@ -2,9 +2,9 @@
 	width: 100%;
 	height: 100px;
 	background: linear-gradient(to right,
-			var(--pastel-blue),
-			var(--pastel-sky),
-			var(--pastel-mint));
+			rgba(var(--pastel-blue-rgb), 0.2),
+			rgba(var(--pastel-sky-rgb), 0.2),
+			rgba(var(--pastel-mint-rgb), 0.2));
 	border-bottom: 1px solid rgba(168, 216, 234, 0.2);
 }
 
@@ -98,8 +98,8 @@
 	font-weight: 500;
 	color: var(--primary-color);
 	background: linear-gradient(90deg,
-			rgb(var(--pastel-blue)),
-			rgb(var(--pastel-aqua)));
+			rgba(var(--pastel-blue-rgb), 0.1),
+			rgba(var(--pastel-aqua-rgb), 0.1));
 	border: none;
 	border-radius: 12px;
 	cursor: pointer;
