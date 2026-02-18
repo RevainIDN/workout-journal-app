@@ -3,7 +3,7 @@ import { JournalEntry } from '@/types/journalEntryTypes'
 
 import WorkoutIcon from '@/components/icons/WorkoutIcon';
 import MealIcon from '@/components/icons/MealIcon';
-import OtherInfo from './OtherInfo';
+import InfoCard from '@/components/ui/InfoCard/InfoCard';
 
 export default function FullHistoryDescription({ entry }: { entry: JournalEntry }) {
 	const totalCalories = entry.nutrition.reduce((total, meal) => total + (meal?.calories || 0), 0);
@@ -43,10 +43,10 @@ export default function FullHistoryDescription({ entry }: { entry: JournalEntry 
 				</div>
 			)}
 			<div className={historyStyles.otherInfoSection}>
-				{(entry.water !== undefined && entry.water > 0) && <OtherInfo title="Water" value={`${entry.water} Liters`} />}
-				{entry.weight !== undefined && <OtherInfo title="Weight" value={`${entry.weight} kg`} />}
-				{entry.workout.moodAfter && <OtherInfo title="Mood" value={entry.workout.moodAfter} />}
-				{entry.workout.energyAfter && <OtherInfo title="Energy" value={entry.workout.energyAfter} />}
+				{(entry.water !== undefined && entry.water > 0) && <InfoCard type="Water" title='Water' value={`${entry.water} Liters`} />}
+				{entry.weight !== undefined && <InfoCard type="Weight" title='Weight' value={`${entry.weight} kg`} />}
+				{entry.workout.moodAfter && <InfoCard type="Mood" title='Mood' value={entry.workout.moodAfter} />}
+				{entry.workout.energyAfter && <InfoCard type="Energy" title='Energy' value={entry.workout.energyAfter} />}
 			</div>
 			{entry.notes && (
 				<div className={historyStyles.notesSection}>
