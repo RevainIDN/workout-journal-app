@@ -1,0 +1,44 @@
+.statsInfo {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+}
+
+.statsCharts {
+	display: flex;
+	flex-direction: column;
+	margin-top: 24px;
+	gap: 24px;
+}
+
+.chartCard {
+	background: var(--card-bg, #fff);
+	border-radius: 8px;
+	padding: 12px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.chartHeader {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 20px;
+	padding: 6px;
+	color: orange;
+}
+
+.workoutHeader {
+	color: rgba(var(--pastel-aqua-rgb), 1)
+}
+
+.nutritionHeader {
+	color: rgba(var(--pastel-peach-rgb), 1);
+}
+
+.weightHeader {
+	color: rgba(var(--pastel-green-rgb), 1);
+}
+
+.chartTitle {
+	font-size: 0.95rem;
+	color: var(--text-muted, #333);
+}

@@ -1,0 +1,13 @@
+.statsPage {
+	width: 100%;
+	margin-bottom: 12px;
+}
+
+.pageContent {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	width: 800px;
+	padding: 32px 16px;
+	margin: 0 auto;
+}
