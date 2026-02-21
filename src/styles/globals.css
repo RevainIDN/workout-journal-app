@@ -31,12 +31,14 @@ body {
   font-family: var(--font-sans), sans-serif;
 }
 
-main {
-  flex: 1;
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-footer {
-  margin-top: auto;
+.content {
+  flex: 1;
 }
 
 ul,
