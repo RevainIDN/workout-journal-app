@@ -4,7 +4,7 @@ import HistoryDropdown from './components/HistoryDropdown/HistoryDropdown'
 
 export default function History() {
 	return (
-		<main className={pageStyles.historyPage}>
+		<div className={pageStyles.historyPage}>
 			<div className={pageStyles.pageContent}>
 				<div className={pageStyles.header}>
 					<h1 className={pageStyles.title}>Journal History</h1>
@@ -12,6 +12,6 @@ export default function History() {
 				</div>
 				<HistoryDropdown />
 			</div>
-		</main>
+		</div>
 	)
 }

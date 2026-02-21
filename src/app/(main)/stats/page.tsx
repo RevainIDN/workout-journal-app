@@ -4,7 +4,7 @@ import StatsSection from './components/StatsSection/StatsSection'
 
 export default function StatsPage() {
 	return (
-		<main className={pageStyles.statsPage}>
+		<div className={pageStyles.statsPage}>
 			<div className={pageStyles.pageContent}>
 				<div className={pageStyles.header}>
 					<h1 className={pageStyles.title}>Your Progress</h1>
@@ -12,6 +12,6 @@ export default function StatsPage() {
 				</div>
 				<StatsSection />
 			</div>
-		</main>
+		</div>
 	)
 }

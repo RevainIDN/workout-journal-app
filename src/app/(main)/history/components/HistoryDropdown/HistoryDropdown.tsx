@@ -9,7 +9,7 @@ import CalendarIcon from '@/components/icons/CalendarIcon'
 import DropdownArrowIcon from '@/components/icons/DropdownArrowIcon'
 import TagList from '@/components/ui/TagList/TagList'
 import FullHistoryDescription from '../FullHistoryDescription/FullHistoryDescription'
-import useHistoryEntries from '@/app/history/hooks/useHistoryEntries'
+import useHistoryEntries from '../../hooks/useHistoryEntries'
 
 export default function HistoryDropdown() {
 	const { entries: history, deleteEntry } = useHistoryEntries()
