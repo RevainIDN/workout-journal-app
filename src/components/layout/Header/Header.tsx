@@ -35,7 +35,7 @@ export default function Header() {
 				</div>
 				<div className={headerStyles.userActions}>
 					<button className={headerStyles.loginButton}>
-						Log In
+						<Link href="/auth/login">Log In</Link>
 					</button>
 				</div>
 			</div>
